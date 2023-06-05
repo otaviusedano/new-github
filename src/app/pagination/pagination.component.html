@@ -1,0 +1,15 @@
+<div class="flex gap-4">
+  <app-button data-testid="prev-button" (click)="handlePrevPage()"><</app-button>
+  <ul *ngIf="getAllResults() | async" class="flex gap-2">
+    <li
+      data-testid="li"
+      (click)="handleSetCurrentPage(page)"
+      class="py-2 p-3 rounded-md cursor-pointer hover:outline outline-1 hover:outline-offset-0"
+      *ngFor="let page of setPages()"
+      [ngClass]="{'bg-blue-400': getCurrentPage() === page}"
+    >
+      {{page}}
+    </li>
+  </ul>
+  <app-button data-testid="next-button"  (click)="handleNextPage()">></app-button>
+</div>

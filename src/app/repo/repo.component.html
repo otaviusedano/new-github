@@ -1,0 +1,29 @@
+<div data-testid="repo" *ngFor="let repo of filterRepos()" class="border-[2px] border-gray-400 rounded-md p-4 flex justify-between gap-1 mb-3">
+  <ng-template #notFoundImg>
+    <img  src="../../assets/icon-github.svg" alt="github icon">
+  </ng-template>
+  <div class="flex-1">
+    <div class="flex gap-1">
+      <img *ngIf="repo.language; else notFoundImg" width="20" height="20" src="https://github.com/{{repo.language}}.png?size=16" alt="github icon">
+      <a href={{repo.html_url}} target="_blank" class="text-blue-500 font-bold hover:underline">{{repo.name}}</a>
+    </div>
+    <span *ngIf="repo.description" class="text-sm">{{repo.description}}</span>
+    <span *ngIf="!repo.description" class="text-sm">uma descrição do projeto</span>
+    <app-languages [languageUrl]="repo.languages_url" />
+    <div class="text-xs flex items-center gap-1 mt-2">
+      <div *ngIf="repo.language" class="bg-blue-400 p-1 rounded-full"></div>
+      <span *ngIf="repo.language" class="">{{repo.language}}</span>
+      <span *ngIf="repo.language" class="mx-1"></span>
+      <div class="flex gap-1 items-center cursor-pointer hover:outline hover:outline-offset-2 rounded-sm hover:outline-2 hover:text-blue-400">
+        <img height="16" width="16" src="../../assets/icon-star.svg" alt="star icon">
+        <span data-testid="span">{{formatStars(repo.stargazers_count)}}</span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="flex gap-1 items-center cursor-pointer outline outline-1 outline-offset-4 rounded-sm hover:outline-2 outline-slate-950">
+      <img height="16" width="16" src="../../assets/icon-star.svg" alt="star icon">
+      <span>Star</span>
+    </div>
+  </div>
+</div>

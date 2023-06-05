@@ -1,0 +1,12 @@
+<app-header />
+<main class="bg-slate-50 text-slate-950 ">
+  <section class="max-w-[1328px] mx-auto p-6 py-20 grid ">
+    <div class="min-h-[80vh]">
+      <h1 data-testid="all-results" class="font-semibold text-xl mb-4"><span class="font-bold">{{getAllResults() | number}}</span> Resultados</h1>
+      <app-repo />
+    </div>
+    <div class="min-h-[10vh] flex items-center justify-center self-center">
+      <app-pagination />
+    </div>
+  </section>
+</main>
